@@ -20,7 +20,7 @@ func Env(key string) string {
 }
 
 func Connect() {
-	dsn := Env("DB_USERNAME") + ":" + Env("DB_PASSWORD") + "@tcp(" + Env("DB_HOST") + ":" + Env("DB_PORT") + ")/bookstore?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := Env("DB_USERNAME") + ":" + Env("DB_PASSWORD") + "@tcp(" + Env("DB_HOST") + ":" + Env("DB_PORT") + ")/" + Env("DB_DATABASE") + "?charset=utf8mb4&parseTime=True&loc=Local"
 	d, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
